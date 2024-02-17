@@ -1,13 +1,13 @@
-package net.xindus.service;
+package com.wishlist.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import net.xindus.dto.ProductDto;
-import net.xindus.model.Product;
-import net.xindus.repository.ProductRepository;
+import com.wishlist.dto.ProductDto;
+import com.wishlist.model.Product;
+import com.wishlist.repository.ProductRepository;
 
 @Service
 public class ProductServiceImpl implements ProductService {

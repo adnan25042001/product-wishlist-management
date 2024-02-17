@@ -1,4 +1,4 @@
-package net.xindus.exception;
+package com.wishlist.exception;
 
 public class ProductException extends RuntimeException {
 

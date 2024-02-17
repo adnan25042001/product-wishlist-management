@@ -1,4 +1,4 @@
-package net.xindus.model;
+package com.wishlist.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,8 +1,8 @@
-package net.xindus.repository;
+package com.wishlist.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import net.xindus.model.Product;
+import com.wishlist.model.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 

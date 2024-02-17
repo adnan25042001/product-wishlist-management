@@ -1,4 +1,4 @@
-package net.xindus.controller;
+package com.wishlist.controller;
 
 public class WishlistController {
 

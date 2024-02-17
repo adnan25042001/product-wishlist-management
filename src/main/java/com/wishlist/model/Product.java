@@ -1,4 +1,4 @@
-package net.xindus.model;
+package com.wishlist.model;
 
 import java.math.BigDecimal;
 

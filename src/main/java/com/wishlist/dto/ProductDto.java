@@ -1,4 +1,4 @@
-package net.xindus.dto;
+package com.wishlist.dto;
 
 import java.math.BigDecimal;
 

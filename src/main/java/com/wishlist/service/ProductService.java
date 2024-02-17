@@ -1,9 +1,9 @@
-package net.xindus.service;
+package com.wishlist.service;
 
 import java.util.List;
 
-import net.xindus.dto.ProductDto;
-import net.xindus.model.Product;
+import com.wishlist.dto.ProductDto;
+import com.wishlist.model.Product;
 
 public interface ProductService {
 
