@@ -12,7 +12,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -37,7 +36,7 @@ public class User implements UserDetails {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private Long id;
 
 	@NotNull(message = "Username should not be null!")
@@ -53,8 +52,8 @@ public class User implements UserDetails {
 
 	@NotNull(message = "Password should not be null!")
 	@NotBlank(message = "Password should not be blank!")
-	@Size(min = 8, max = 20, message = "Password should contain at least 8 and at most 20 characters")
-	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=\\S+$).{8,}$", message = "Password must contain at least one digit, one lowercase letter, and no whitespace.")
+	@Size(min = 6, max = 20, message = "Password should contain at least 6 and at most 20 characters")
+	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=\\S+$).{6,}$", message = "Password must contain at least one digit, one lowercase letter, and no whitespace.")
 	@Pattern(regexp = "^[a-zA-Z].*", message = "Password must start with a letter.")
 	private String password;
 

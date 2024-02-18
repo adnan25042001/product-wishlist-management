@@ -11,31 +11,30 @@ import io.swagger.v3.oas.annotations.servers.Server;
 @OpenAPIDefinition(
 		info = @Info(
 				contact = @Contact(
-						name = "Adnan Hussain",
-						email = "adnan.hussain.136660@gmail.com",
+						name = "Adnan Hussain", 
+						email = "adnan.hussain.136660@gmail.com", 
 						url = "https://adnan25042001.github.io/"
-				),
-				description = "OpenApi documentation for e-commerce application",
-				title = "WishCart - Documentation",
+				), 
+				description = "OpenApi documentation for wishlist management application", 
+				title = "Product Wishlist Management - Documentation", 
 				version = "1.0"
-		),
+		), 
 		servers = {
 				@Server(
-						url = "http://localhost:8000",
+						url = "http://localhost:8000", 
 						description = "Local ENV"
 				),
 //				@Server(
 //						url = "http://localhost:8000",
 //						description = "PROD ENV"
 //				)
-		}
-)
+})
 @SecurityScheme(
-		name = "bearerAuth",
-		description = "First you have to create a new account or login in your account then you will get bearer token. Paste the bearer token in value",
-		scheme = "bearer",
-		type = SecuritySchemeType.HTTP,
-		bearerFormat = "JWT",
+		name = "bearerAuth", 
+		description = "First you have to create a new account or login in your account then you will get bearer token. Paste the bearer token in value", 
+		scheme = "bearer", 
+		type = SecuritySchemeType.HTTP, 
+		bearerFormat = "JWT", 
 		in = SecuritySchemeIn.HEADER
 )
 public class OpenApiConfig {
