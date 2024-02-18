@@ -29,7 +29,7 @@ public class ApplicationConfig {
 
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		UserDetails admin = User.builder().username("admin").email("admin@gmail.com")
-				.password(passwordEncoder.encode("admin")).role(Role.USER).build();
+				.password(passwordEncoder.encode("admin")).role(Role.ADMIN).build();
 
 		return new UserDetailsService() {
 			@Override

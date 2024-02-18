@@ -2,7 +2,6 @@ package com.wishlist.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,11 +25,6 @@ import lombok.RequiredArgsConstructor;
 public class AuthController {
 
 	private final AuthenticationService authenticationService;
-
-	@GetMapping("/get")
-	public String get() {
-		return "Hello World";
-	}
 
 	@Operation(summary = "Endpoint for registering a new user")
 	@PostMapping("/register")

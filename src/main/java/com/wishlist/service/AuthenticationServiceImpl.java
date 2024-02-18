@@ -3,7 +3,6 @@ package com.wishlist.service;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,20 +20,24 @@ import com.wishlist.model.Role;
 import com.wishlist.model.User;
 import com.wishlist.repository.UserRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
 
-	@Autowired
-	private UserRepository userRepository;
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-	@Autowired
-	private JwtService jwtService;
-	@Autowired
-	private AuthenticationManager authenticationManager;
+	private final UserRepository userRepository;
+
+	private final PasswordEncoder passwordEncoder;
+
+	private final JwtService jwtService;
+
+	private final AuthenticationManager authenticationManager;
 
 	@Override
 	public AuthResponseDto registerNewUser(UserRegistrationDto userRegistrationDto) throws UserException {
+
+		System.out.println(userRegistrationDto);
 
 		Optional<User> existingUser = userRepository.findByEmail(userRegistrationDto.getEmail());
 
@@ -43,6 +46,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
 		User user = User.builder().username(userRegistrationDto.getUsername()).email(userRegistrationDto.getEmail())
 				.password(passwordEncoder.encode(userRegistrationDto.getPassword())).role(Role.USER).build();
+
+		System.out.println(user);
 
 		userRepository.save(user);
 

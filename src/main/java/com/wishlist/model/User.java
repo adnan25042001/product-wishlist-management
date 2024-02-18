@@ -52,9 +52,6 @@ public class User implements UserDetails {
 
 	@NotNull(message = "Password should not be null!")
 	@NotBlank(message = "Password should not be blank!")
-	@Size(min = 6, max = 20, message = "Password should contain at least 6 and at most 20 characters")
-	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=\\S+$).{6,}$", message = "Password must contain at least one digit, one lowercase letter, and no whitespace.")
-	@Pattern(regexp = "^[a-zA-Z].*", message = "Password must start with a letter.")
 	private String password;
 
 	@Enumerated(EnumType.STRING)

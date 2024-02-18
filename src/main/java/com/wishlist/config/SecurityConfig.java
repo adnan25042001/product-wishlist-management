@@ -37,7 +37,7 @@ public class SecurityConfig {
 		.authorizeHttpRequests()
 	    .requestMatchers(
 	            "/api/auth/**",
-//	            "/api/auth/register",
+	            "/api/products/",
 	            "/v2/api-docs", 
 	            "/v3/api-docs", 
 	            "/v3/api-docs/**",
@@ -50,7 +50,7 @@ public class SecurityConfig {
 	            "/swagger-ui.html"
 	            )
 	    .permitAll()
-	    .requestMatchers("/api/admin/**")
+	    .requestMatchers( "/api/products/add")
 	    .hasRole(ADMIN.name())
 	    .requestMatchers("/api/wishlists/**")
 	    .hasRole(USER.name())
