@@ -19,6 +19,7 @@ import com.wishlist.repository.WishlistRepository;
 
 import lombok.RequiredArgsConstructor;
 
+//This service class implements the WishlistService interface.
 @Service
 @RequiredArgsConstructor
 public class WishlistServiceImpl implements WishlistService {

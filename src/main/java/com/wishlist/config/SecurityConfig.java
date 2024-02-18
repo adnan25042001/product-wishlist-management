@@ -15,26 +15,31 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+//This class is used to configure Spring Security for the application.
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
-	// JWT authentication filter bean
+	// Autowired JWT authentication filter bean
 	@Autowired
 	private JwtAuthenticationFilter jwtAuthFilter;
 
-	// Authentication provider
+	// Autowired authentication provider
 	@Autowired
 	private AuthenticationProvider authenticationProvider;
 
-	// Create security filter bean
+	// This method configures Spring Security's HttpSecurity object.
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 	    
 		http
+		// Disable CSRF (Cross-Site Request Forgery). In a real-world application, you might want to enable it.
 		.csrf(AbstractHttpConfigurer::disable)
+		// Enable CORS (Cross-Origin Resource Sharing)
 		.cors(Customizer.withDefaults())
+		// Start configuring request authorization
 		.authorizeHttpRequests()
+	    // The following paths are open and do not require authentication
 	    .requestMatchers(
 	            "/api/auth/**",
 	            "/api/products/",
@@ -50,19 +55,26 @@ public class SecurityConfig {
 	            "/swagger-ui.html"
 	            )
 	    .permitAll()
+	    // The path "/api/products/add" requires ADMIN role
 	    .requestMatchers( "/api/products/add")
 	    .hasRole(ADMIN.name())
+	    // The paths starting with "/api/wishlists/" require USER role
 	    .requestMatchers("/api/wishlists/**")
 	    .hasRole(USER.name())
+	    // All other requests must be authenticated
 	    .anyRequest()
 		.authenticated()
 		.and()
+		// Configure session management to be stateless
 		.sessionManagement()
 		.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and()
+		// Set the authentication provider
 		.authenticationProvider(authenticationProvider)
+		// Add the JWT authentication filter before the UsernamePasswordAuthenticationFilter
 		.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 		
+	    // Build and return the HttpSecurity object
 	    return http.build();
 	}
 

@@ -20,24 +20,29 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
-@RestController
-@RequestMapping("/api/products")
-@RequiredArgsConstructor
-@Tag(name = "Products")
+@RestController // Controller for handling Product related requests
+@RequestMapping("/api/products") // Mapping the controller to handle requests at /api/products
+@RequiredArgsConstructor // Lombok annotation to generate a constructor requiring all final fields
+@Tag(name = "Products") // Tag for Swagger documentation
 public class AdminController {
 
+	// Service for handling product related business logic
 	private final ProductService productService;
 
-	@Operation(summary = "Endpoint for adding a new Product")
-	@SecurityRequirement(name = "bearerAuth")
+	// Endpoint for adding a new product, only accessible by admin
+	@Operation(summary = "Endpoint for adding a new Product | only admin can add Products")
+	@SecurityRequirement(name = "bearerAuth") // Security requirement for Swagger documentation
 	@PostMapping("/add")
 	public ResponseEntity<Product> addProductHandler(@Valid @RequestBody ProductDto productDto) {
+		// Add a new product and return the created product
 		return new ResponseEntity<Product>(productService.addProduct(productDto), HttpStatus.CREATED);
 	}
 
-	@Operation(summary = "Endpoint for getting all the Product List")
+	// Endpoint for getting all the products, does not require any authentication
+	@Operation(summary = "Endpoint for getting all the Product List | does not require any authentication")
 	@GetMapping("/")
 	public ResponseEntity<List<Product>> getAllProductHandler() {
+		// Get all products and return them
 		return new ResponseEntity<List<Product>>(productService.getAllProduct(), HttpStatus.OK);
 	}
 
