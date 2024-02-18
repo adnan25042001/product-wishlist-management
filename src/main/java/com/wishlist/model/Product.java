@@ -1,7 +1,5 @@
 package com.wishlist.model;
 
-import java.math.BigDecimal;
-
 import org.hibernate.validator.constraints.URL;
 
 import jakarta.persistence.Column;
@@ -39,7 +37,7 @@ public class Product {
 
 	@NotNull(message = "Price should not be null!")
 	@DecimalMin(value = "0.0", inclusive = false, message = "Price should be greater than 0")
-	private BigDecimal price;
+	private double price;
 
 	@URL(message = "Image URL should be valid")
 	private String imageUrl;

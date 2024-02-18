@@ -1,7 +1,5 @@
 package com.wishlist.dto;
 
-import java.math.BigDecimal;
-
 import org.hibernate.validator.constraints.URL;
 
 import jakarta.validation.constraints.DecimalMin;
@@ -27,7 +25,7 @@ public class ProductDto {
 
 	@NotNull(message = "Price should not be null!")
 	@DecimalMin(value = "0.0", inclusive = false, message = "Price should be greater than 0")
-	private BigDecimal price;
+	private double price;
 
 	@URL(message = "Image URL should be valid")
 	private String imageUrl;
@@ -35,4 +33,5 @@ public class ProductDto {
 	@NotNull(message = "Category should not be null!")
 	@NotBlank(message = "Category should not be blank!")
 	private String category;
+
 }

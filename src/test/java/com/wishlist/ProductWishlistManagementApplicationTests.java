@@ -8,8 +8,6 @@ class ProductWishlistManagementApplicationTests {
 
 	@Test
 	void contextLoads() {
-		
-		
 	}
 
 }
