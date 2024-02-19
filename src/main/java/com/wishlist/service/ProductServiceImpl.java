@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 public class ProductServiceImpl implements ProductService {
 
 	// Autowired ProductRepository bean
-	private ProductRepository productRepository;
+	private final ProductRepository productRepository;
 
 	// This method handles the addition of a new product.
 	public Product addProduct(ProductDto productDto) {
